@@ -28,18 +28,21 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
+
 #Display FruityVice API repsonse
 streamlit.header("Fruityvice Fruit Advice!")
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
+try:
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
+if not fruit_choice:
+  streamlit.error("Please select a fruit to get information.")
+  else 
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  streamlit.dataframe(fruityvice_normalized)
 
-#import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+except URLError as e:
+streamlit.error()
 
-# Normalize JSON Response
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# Output as a table
-streamlit.dataframe(fruityvice_normalized)
 
 streamlit.stop()
 
@@ -56,5 +59,4 @@ streamlit.dataframe(my_data_rows)
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','Kiwi')
 streamlit.write('Thanks for adding ', add_my_fruit)
 
-#Will not work
-my_cur.execute(insert into fruit_load_list values ('from streamlit')")
+
