@@ -41,7 +41,7 @@ try:
     streamlit.dataframe(fruityvice_normalized)
 
  # Display the API response as a table
-        streamlit.dataframe(fruityvice)
+streamlit.dataframe(fruityvice)
 
 except URLError as e:
   streamlit.error()
