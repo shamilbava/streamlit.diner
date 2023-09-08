@@ -40,6 +40,9 @@ try:
     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
     streamlit.dataframe(fruityvice_normalized)
 
+ # Display the API response as a table
+        streamlit.dataframe(fruityvice)
+
 except URLError as e:
   streamlit.error()
 
