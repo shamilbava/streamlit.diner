@@ -4,10 +4,8 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
-
-#Headers
-
-streamlit.title('My Parents New Healthy Diner')
+# Headers
+streamlit.title('Healthy Diner')
 
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
@@ -17,11 +15,11 @@ streamlit.text('🥑🍞 Avocado Toast')
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-# Read the fruit list csv file
+# Read Fruit List CSV
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
-# Create a pick list so the users can pick the fruit they want to include 
+# User Pick List 
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado', 'Strawberries'])
 
 # Filter the fruit list depending on user input
@@ -30,7 +28,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page
 streamlit.dataframe(fruits_to_show)
 
-# New section for the fruityvice API
+# New section for the Fruityvice API
 streamlit.header("Fruityvice Fruit Advice!")
 try:
     # Request user input for getting the API response
@@ -46,7 +44,7 @@ try:
 except URLError as e:
     streamlit.error()
 
-#Functions
+# Functions
 
 def get_fruityvice_data(this_fruit_choice):
     # Get API response and normalize its JSON
