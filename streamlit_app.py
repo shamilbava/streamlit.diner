@@ -63,6 +63,12 @@ def insert_row_snowflake(new_fruit):
         my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
         return "Thanks for adding " + new_fruit
 
+# New section for the snowflake fruit list
+streamlit.header("View Our Fruit List - Add Your Favorites!")
+
+# Add the button to load the fruit
+if streamlit.button('Get Fruit List'):
+
 
 #import snowflake.connector
 
