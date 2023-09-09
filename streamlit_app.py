@@ -27,7 +27,7 @@ def insert_row_snowflake(new_fruit):
 
 ## Main workflow ##
 
-streamlit.title('My Parents New Healthy Diner')
+streamlit.title('Healthy Diner')
 
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
