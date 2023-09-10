@@ -4,7 +4,7 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
-## Functions ##
+#Functions
 
 def get_fruityvice_data(this_fruit_choice):
     # Get API response and normalize its JSON
@@ -25,7 +25,7 @@ def insert_row_snowflake(new_fruit):
         my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
         return "Thanks for adding " + new_fruit
 
-## Main workflow ##
+#Mainspace
 
 streamlit.title('Healthy Diner')
 
